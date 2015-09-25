@@ -1,27 +1,26 @@
 package com.softtanck.slidingspanelayout;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SlidingPaneLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 
 import com.nineoldandroids.view.ViewHelper;
 import com.softtanck.slidingspanelayout.fragment.Content;
 import com.softtanck.slidingspanelayout.fragment.Menu;
 
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends SwipeBackActivity {
 
     private SlidingPaneLayout slidingPaneLayout;
+
+    private SwipeBackLayout swipeBackLayout;
 
     private Menu menu;
     private Content content;
@@ -51,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         slidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener() {
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
-
-
                 ViewHelper.setScaleY(content.getCurrentView(), (1 - slideOffset * 0.2f));// 设置缩放的基准点
                 float scale = 1 - ((1 - slideOffset) * maxMargin * 2)
                         / (float) defaultDisplay.getHeight();
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        swipeBackLayout = getSwipeBackLayout();
+        swipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_BOTTOM);
     }
-
-
 }
