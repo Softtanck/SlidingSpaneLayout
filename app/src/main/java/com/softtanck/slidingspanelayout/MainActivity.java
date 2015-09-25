@@ -51,14 +51,8 @@ public class MainActivity extends AppCompatActivity {
         slidingPaneLayout.setPanelSlideListener(new SlidingPaneLayout.PanelSlideListener() {
             @Override
             public void onPanelSlide(View panel, float slideOffset) {
-//                int contentMargin = (int) (slideOffset * maxMargin);
-//                FrameLayout.LayoutParams contentParams = content
-//                        .getCurrentViewParams();
-//                contentParams.setMargins(0, contentMargin, 0, contentMargin);
-//                content.setCurrentViewPararms(contentParams);
 
 
-//                ViewHelper.setScaleX(content.getCurrentView(), (1 - slideOffset * 0.7f));// 设置缩放的基准点
                 ViewHelper.setScaleY(content.getCurrentView(), (1 - slideOffset * 0.2f));// 设置缩放的基准点
                 float scale = 1 - ((1 - slideOffset) * maxMargin * 2)
                         / (float) defaultDisplay.getHeight();
